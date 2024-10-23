@@ -1,0 +1,1 @@
+[{"name": "Lima", "country": "Peru", "priority": 3, "is_visited": false}, {"name": "Auckland", "country": "New Zealand", "priority": 1, "is_visited": true}, {"name": "Rome", "country": "Italy", "priority": 12, "is_visited": true}]
