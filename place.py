@@ -7,7 +7,7 @@ class Place:
         self.is_visited = is_visited
 
     def __str__(self):
-        return f"{self.name:<8} in {self.country:<11}  {self.priority:>2}"
+        return f"{self.name:<8} in {self.country:<11} {self.priority:>2} {'v' if self.is_visited else 'n'}"
 
     def mark_as_visited(self):
         """Mark place as visited"""
