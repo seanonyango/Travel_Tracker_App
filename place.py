@@ -1,13 +1,10 @@
 class Place:
 
-    def __init__(self,name,country,priority,is_visited):
+    def __init__(self,name="",country="",priority=0,is_visited= False):
         self.name = name
         self.country = country
         self.priority = priority
-        if is_visited == "v":
-            self.is_visited = True
-        else:
-            self.is_visited = False
+        self.is_visited = is_visited
 
     def __str__(self):
         return f"{self.name:<8} in {self.country:<11}  {self.priority:>2}"
