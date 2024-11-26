@@ -14,7 +14,7 @@ def run_tests():
 
     # Test loading places
     print("Test loading places:")
-    place_collection.load_places('places.json')
+    place_collection.load_places()
     print(place_collection)
     assert place_collection.places  # assuming CSV file is non-empty, non-empty list is considered True
 

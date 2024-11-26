@@ -10,6 +10,12 @@ class PlaceCollection:
     def __init__(self):
         self.places = []
 
+    def __str__(self):
+        string = ("\n".join(str(place) for place in self.places))
+        return f"{string}"
+
+
+
 
     def load_places(self):
         """Load places from external file"""
@@ -34,6 +40,7 @@ class PlaceCollection:
     def sort(self,key, reverse= False):
         """Count number of sorted places"""
         self.places.sort(key=attrgetter(key, 'priority'), reverse = reverse)
+
 
 
 
