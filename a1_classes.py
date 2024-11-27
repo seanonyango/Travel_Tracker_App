@@ -47,10 +47,10 @@ def main():
 def mark_place_as_visited(places_and_travel_info):
     """Mark a place as visited"""
     for i, place in enumerate(places_and_travel_info.places):
-        print(f"{i}. {place}")
+        print(f"{i+1}. {place}")
     print("Enter the number of the place to mark as visited")
     index_to_mark = get_valid_integer(1, len(places_and_travel_info.places), ">>>")
-    place_to_mark = places_and_travel_info.places[index_to_mark]
+    place_to_mark = places_and_travel_info.places[index_to_mark-1]
     place_to_mark.mark_as_visited()
     print(f"{place_to_mark.name} has been marked as visited")
     return places_and_travel_info
