@@ -1,10 +1,12 @@
 import random
+from place import Place
+from placecollection import PlaceCollection
 
 """
-CP1404 Assignment 1 - Travel Tracker
-Name:Sean Onyango
-Date started:21/10/2024
-GitHub URL: https://github.com/cp1404-students/a1-seanonyango
+This is the revision of assignment number 1 to include classes.
+Only minor changes have been include the class object instead of a list.
+The general working of the code remains the same and any functional hiccups from
+assignment 1 were maintained such as the ability to mark an already visited place as visited.
 """
 """
 """
@@ -21,26 +23,37 @@ Q - Quit"""
 
 def main():
     print(f"Travel tracker 1.0 - by {DEVELOPER}")
-    places_and_travel_info = load_external_file_into_list("places.json")
+    # Initiate places_and_travel_info as object
+    places_and_travel_info = PlaceCollection()
+    places_and_travel_info.load_places()
     menu_choice = None
     while menu_choice != "Q":
         menu_choice = call_main_menu()
         if menu_choice == "D":
-            display_full_list_of_places(places_and_travel_info)
+            print(places_and_travel_info)
         elif menu_choice == "R":
             generate_random_city_and_country(places_and_travel_info)
         elif menu_choice == "A":
             places_and_travel_info = add_new_place(places_and_travel_info)
         elif menu_choice == "M":
-            display_full_list_of_places(places_and_travel_info)
-            print("Enter the number of place to mark as visited")
-            choice, places_and_travel_info = mark_new_place_as_visited(places_and_travel_info)
-            display_marked_place_as_visited(choice, places_and_travel_info)
+            places_and_travel_info = mark_place_as_visited(places_and_travel_info)
         else:
             print("Invalid Menu Choice.")
-    update_external_file(places_and_travel_info)
-    print(f"{len(places_and_travel_info)} places added to {EXTERNAL_FILE}")
+    places_and_travel_info.save_places()
+    print(f"{len(places_and_travel_info.places)} places added to {EXTERNAL_FILE}")
     print("Have a nice day!")
+
+
+def mark_place_as_visited(places_and_travel_info):
+    """Mark a place as visited"""
+    for i, place in enumerate(places_and_travel_info.places):
+        print(f"{i}. {place}")
+    print("Enter the number of the place to mark as visited")
+    index_to_mark = get_valid_integer(1, len(places_and_travel_info.places), ">>>")
+    place_to_mark = places_and_travel_info.places[index_to_mark]
+    place_to_mark.mark_as_visited()
+    print(f"{place_to_mark.name} has been marked as visited")
+    return places_and_travel_info
 
 
 def display_marked_place_as_visited(choice, places_and_travel_info):
@@ -80,9 +93,9 @@ def add_new_place(places_and_travel_info):
     country = get_valid_text_input("Country: ").title()
     priority = str(get_valid_numerical_input("Priority: "))
     # Set all new places to unvisited
-    new_place = [name, country, priority, "n"]
-    print(f"{name} in {country} (priority {priority}) added to Travel Tracker.")
-    places_and_travel_info.append(new_place)
+    new_place = Place(name, country, priority)
+    print(f"{new_place.name} in {new_place.country} (priority {new_place.priority}) added to Travel Tracker.")
+    places_and_travel_info.add_place(new_place)
     return places_and_travel_info
 
 
@@ -135,12 +148,9 @@ def load_external_file_into_list(file):
 
 def generate_random_city_and_country(places_and_travel_info):
     """Generates a random unvisited city and country pair"""
-    unvisited_places = [place for place in places_and_travel_info if place[3] == "n"]
-
     try:
-        random_city, random_country = derive_city_and_country(random.choice(unvisited_places))
-        print(f"Not sure where to visit next?\nHow about... {random_city.title()} in {random_country.title()}?")
-    # Exception for when there are no unvisited places
+        random_city = random.choice([place for place in places_and_travel_info.places if not place.is_visited])
+        print(f"Not sure where to visit next?\nHow about... {random_city.name} in {random_city.country}?")
     except IndexError:
         print("No unvisited places")
 
@@ -195,4 +205,3 @@ def sort_unvisited_then_visited(places_and_travel_info):
 
 if __name__ == '__main__':
     main()
-
