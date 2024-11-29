@@ -10,8 +10,8 @@ BoxLayout:
             text: "Sort by:"
         Spinner:
             id: sort_spinner
-            text: 'Name'
-            values: ['Name', 'Country', 'Priority', 'is_visited']
+            text: 'Visited'
+            values: ['Visited', 'Priority', 'Country', 'Name']
 
         Label:
             text: 'Add new Place'
@@ -46,10 +46,14 @@ BoxLayout:
             orientation: "vertical"
 
             Label:
-                # text: app.display_number_of_unvisited()
-                text: "Number of unvisited places: 0"  # Example static text
-
+                size_hint_y: 0.1
+                text: app.display_number_of_unvisited()
+#                text: "Number of unvisited places: 0"
+            BoxLayout:
+                id: places
+                orientation: 'vertical'
         BoxLayout:
-            Button:
+            size_hint_y: 0.1
+            Label:
                 id: welcome_message
                 text: "Welcome to Travel Tracker 2.0"
