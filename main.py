@@ -12,6 +12,10 @@ from kivy.uix.button import Button
 from placecollection import PlaceCollection
 from place import Place
 
+WHITE = 0, 0.8, 0, 1
+
+GREEN = 1, 1, 1, 1
+
 
 class TravelTrackerApp(App):
 
@@ -27,9 +31,11 @@ class TravelTrackerApp(App):
         self.display_places()
         return self.root
 
-    def display_places(self):
+    def display_places(self, key="is_visited"):
         self.root.ids.places.clear_widgets()
-        self.placecollection.sort("is_visited")
+        if key == 'Visited':
+            key = 'is_visited'
+        self.placecollection.sort(key.lower())
 
         for place in self.placecollection.places:
             output = self.get_button_text(place)
@@ -47,9 +53,9 @@ class TravelTrackerApp(App):
     @staticmethod
     def determine_button_background(place):
         if place.is_visited:
-            return 1, 1, 1, 1
+            return GREEN
         else:
-            return 0, 0.8, 0, 1
+            return WHITE
 
     def toggle_visited_status(self, place, button):
         place.is_visited = not place.is_visited
@@ -59,13 +65,18 @@ class TravelTrackerApp(App):
         self.display_places()
         self.update_welcome_message(message)
 
-    def update_welcome_message(self, message):
+    def update_welcome_message(self, message=""):
         self.root.ids.welcome_message.text = message
 
     def add_new_place(self):
         name = self.root.ids.name_input.text.title()
         country = self.root.ids.country_input.text.title()
         priority = self.root.ids.priority_input.text
+        message = self.validate_new_place(country, name, priority)
+        self.update_welcome_message(message)
+        self.display_places()
+
+    def validate_new_place(self, country, name, priority):
         if name and country and priority:
             if priority.isdigit():
                 if int(priority) < 1:
@@ -78,8 +89,12 @@ class TravelTrackerApp(App):
                 message = "Please enter a valid number"
         else:
             message = "All fields must be completed"
-        self.update_welcome_message(message)
-        self.display_places()
+        return message
+
+    def handle_clear(self):
+        ids_to_clear = ['name_input', 'country_input', 'priority_input', 'welcome_message']
+        for input_id in ids_to_clear:
+            self.root.ids[input_id].text = ""
 
     @staticmethod
     def determine_toggle_message(place):
@@ -92,6 +107,8 @@ class TravelTrackerApp(App):
     def get_button_text(place):
         return f"{place.name} in {place.country}, priority {place.priority} {'(visited)' if place.is_visited else ''}"
 
+    def on_stop(self):
+        self.placecollection.save_places()
 
 if __name__ == '__main__':
     TravelTrackerApp().run()

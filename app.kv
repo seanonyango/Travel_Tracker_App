@@ -12,6 +12,7 @@ BoxLayout:
             id: sort_spinner
             text: 'Visited'
             values: ['Visited', 'Priority', 'Country', 'Name']
+            on_text: app.display_places(self.text)
 
         Label:
             text: 'Add new Place'
@@ -19,23 +20,29 @@ BoxLayout:
             text: 'Name'
         TextInput:
             id: name_input
+            multiline: False
+            write_tab: False
 
         Label:
             text: 'Country'
         TextInput:
             id: country_input
+            multiline: False
+            write_tab: False
 
         Label:
             text: 'Priority'
         TextInput:
             id: priority_input
+            multiline: False
+            write_tab: False
 
         Button:
             text: 'Add Place'
             on_press: app.add_new_place()
         Button:
             text: 'Clear'
-            # on_press: app.clear_all()
+            on_press: app.handle_clear()
 
     BoxLayout:
         size_hint_x: 0.8
