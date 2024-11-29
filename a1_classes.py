@@ -5,7 +5,7 @@ from placecollection import PlaceCollection
 """
 This is the revision of assignment number 1 to include classes.
 Only minor changes have been include the class object instead of a list.
-The general working of the code remains the same and any functional hiccups from
+The general working of the code remains the same and any variable names and functional hiccups from
 assignment 1 were maintained such as the ability to mark an already visited place as visited.
 """
 """

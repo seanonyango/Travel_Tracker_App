@@ -37,7 +37,7 @@ class TravelTrackerApp(App):
         """Load places and create dynamic widgets for each place."""
         self.root.ids.places.clear_widgets()  # Reset places before each reload to avoid duplicates
         if key == 'Visited':
-            key = 'is_visited'  # Adjust key for sorting
+            key = 'is_visited'  # Adjust  visited key for sorting
 
         self.placecollection.sort(key.lower())
 
@@ -49,9 +49,9 @@ class TravelTrackerApp(App):
             button.background_color = self.determine_button_background(place)
             self.root.ids.places.add_widget(button)
 
-        self.display_number_of_unvisited()  # Update the display of unvisited places
+        self.display_number_of_unvisited_places()  # Update the display of unvisited places
 
-    def display_number_of_unvisited(self):
+    def display_number_of_unvisited_places(self):
         """Display the number of unvisited places in the GUI."""
         self.root.ids.number_of_unvisited_display.text = f"Places to visit: {self.placecollection.get_number_of_unvisited()}"
 
