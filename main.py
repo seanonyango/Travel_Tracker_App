@@ -23,8 +23,8 @@ class TravelTrackerApp(App):
     def __init__(self):
         """Initialize the application and load existing places"""
         super().__init__()
-        self.placecollection = PlaceCollection()  # Create a PlaceCollection instance
-        self.placecollection.load_places()  # Load places from storage
+        self.placecollection = PlaceCollection()
+        self.placecollection.load_places()
 
     def build(self):
         """Build the GUI using the kivy library"""
@@ -111,9 +111,9 @@ class TravelTrackerApp(App):
     def determine_toggle_message(place):
         """Determine the message to display based on the visited status of the place."""
         if place.is_visited:
-            return f"You visited {place.name}. Good travelling!"  # Message for visited places
+            return f"You visited {place.name}. Good travelling!"
         else:
-            return f"You need to visit {place.name}. Get going!"  # Message for unvisited places
+            return f"You need to visit {place.name}. Get going!"
 
     @staticmethod
     def get_button_text(place):
