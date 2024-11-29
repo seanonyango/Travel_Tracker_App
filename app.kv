@@ -1,8 +1,8 @@
-# Create your Kivy layout in the kv language here
 BoxLayout:
+    # Divide into two horizontal boxes
     orientation: "horizontal"
 
-    BoxLayout:
+    BoxLayout:# create left side box
         size_hint_x: 0.2
         orientation: "vertical"
 
@@ -20,6 +20,7 @@ BoxLayout:
             text: 'Name'
         TextInput:
             id: name_input
+            # Limit input to one line and allow tab key to move between fields
             multiline: False
             write_tab: False
 
@@ -44,7 +45,7 @@ BoxLayout:
             text: 'Clear'
             on_press: app.handle_clear()
 
-    BoxLayout:
+    BoxLayout:# Create right_side box
         size_hint_x: 0.8
         orientation: "vertical"
 
@@ -55,7 +56,7 @@ BoxLayout:
             Label:
                 id: number_of_unvisited_display
                 size_hint_y: 0.1
-            BoxLayout:
+            BoxLayout:# Add buttons for each place here
                 id: places
                 orientation: 'vertical'
         BoxLayout:
