@@ -1,7 +1,6 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c)](https://classroom.github.com/a/8dNAoeT6)
-# CP1404 Assignment 2: Travel Tracker 2.0 by YOURNAME
+# CP1404 Assignment 2: Travel Tracker 2.0 by Sean Onyango
 
-_Edit this README, replacing this line and above with your own name/details._  
 _At the end of the project, complete the project reflection below by answering the questions (replace the ... parts)._
 _Note that to get high marks for this, your reflection should match the "exemplary" description from the rubric:_
 
