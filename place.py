@@ -17,5 +17,9 @@ class Place:
         """Mark place as unvisited"""
         self.is_visited = False
 
+    def is_important(self):
+        """Determine if place is important"""
+        return self.priority <= 2
+
 
 
