@@ -1,4 +1,4 @@
-# 🌍 Travel Tracker App (Python + Kivy)
+#  Travel Tracker App (Python + Kivy)
 
 This project is a Travel Tracker application that I built as part of my programming coursework. The goal of the app is to help users keep track of places they want to visit and places they have already visited.
 
@@ -6,7 +6,7 @@ The project started as a simple console-based program and was later extended int
 
 ---
 
-## 🚀 Features
+##  Features
 
 - Add new travel destinations (name, country, priority)
 - Mark places as visited or unvisited
@@ -18,7 +18,7 @@ The project started as a simple console-based program and was later extended int
 
 ---
 
-## 🧠 What I Learned
+##  What I Learned
 
 This project helped me develop and apply several important programming concepts:
 
@@ -33,7 +33,7 @@ It was also my first time building something that felt like a complete applicati
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - Python  
 - Kivy (for GUI)  
@@ -41,7 +41,7 @@ It was also my first time building something that felt like a complete applicati
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 - `main.py` → Main application logic and GUI control  
 - `app.kv` → GUI layout design (Kivy file)  
@@ -53,7 +53,7 @@ It was also my first time building something that felt like a complete applicati
 
 ---
 
-## ▶️ How to Run
+##  How to Run
 
 1. Make sure Python is installed  
 2. Install Kivy (if not already installed):
@@ -65,7 +65,7 @@ It was also my first time building something that felt like a complete applicati
 ---
 
 
-## 📌 Notes
+##  Notes
 
 This project was originally completed as part of a university assignment and has been adapted for my personal GitHub portfolio.
   
