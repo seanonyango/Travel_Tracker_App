@@ -64,6 +64,11 @@ It was also my first time building something that felt like a complete applicati
    
 ---
 
+## 📸 Screenshots
+
+![Travel Tracker GUI](screenshots/GUI.png)
+
+
 
 ##  Notes
 
